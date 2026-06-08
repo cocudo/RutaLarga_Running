@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía del Proyecto - Asistente de IA (RutaLarga Running)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #090b0f;
+            --bg-card: #0f131a;
+            --border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-lime: #ccff00;
+            --accent-blue: #00e5ff;
+            --accent-red: #ff3b30;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Infographic Container (Optimized for PDF Printing) */
+        .infographic-container {
+            width: 800px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Top Title block */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px dashed rgba(255, 255, 255, 0.1);
+            padding-bottom: 30px;
+        }
+
+        .header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+            text-transform: uppercase;
+        }
+
+        .header h1 span {
+            color: var(--accent-lime);
+        }
+
+        .header p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 6px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* Business Frictions (Red Alert block) */
+        .friction-block {
+            background: rgba(255, 59, 48, 0.08);
+            border: 1px solid rgba(255, 59, 48, 0.2);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .friction-icon {
+            font-size: 36px;
+            filter: drop-shadow(0 0 10px rgba(255, 59, 48, 0.3));
+        }
+
+        .friction-info h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            color: #ff3b30;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .friction-info p {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+            line-height: 1.45;
+        }
+
+        /* Central Timeline Process */
+        .process-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-blue);
+        }
+
+        .timeline {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 30px;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 12px;
+            top: 20px;
+            bottom: 20px;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--accent-lime), var(--accent-blue));
+            border-radius: 10px;
+        }
+
+        .step-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 20px;
+        }
+        .step-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-circle {
+            position: absolute;
+            left: -27px;
+            top: 4px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: var(--bg-card);
+            border: 3px solid var(--accent-lime);
+            box-shadow: 0 0 10px var(--accent-lime);
+            z-index: 2;
+        }
+
+        .step-item:nth-child(even) .step-circle {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 10px var(--accent-blue);
+        }
+
+        .step-card {
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: border-color 0.2s;
+        }
+        .step-card:hover {
+            border-color: rgba(0, 229, 255, 0.2);
+        }
+
+        .step-text h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        .step-text h4 span {
+            color: var(--accent-lime);
+            margin-right: 8px;
+        }
+        .step-item:nth-child(even) .step-text h4 span {
+            color: var(--accent-blue);
+        }
+
+        .step-text p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+
+        .step-badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        /* Bottom Key Metrics Block */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            border-top: 2px dashed rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+        }
+
+        .metric-card {
+            background-color: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .metric-card .num {
+            font-family: 'Outfit', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--accent-lime);
+            text-shadow: 0 0 10px rgba(204, 255, 0, 0.1);
+        }
+
+        .metric-card:nth-child(2) .num {
+            color: var(--accent-blue);
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.1);
+        }
+
+        .metric-card:nth-child(3) .num {
+            color: #ffaa00;
+            text-shadow: 0 0 10px rgba(255, 170, 0, 0.1);
+        }
+
+        .metric-card h5 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-top: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .metric-card p {
+            font-size: 11.5px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+            line-height: 1.35;
+        }
+
+        /* Print optimization */
+        @media print {
+            body {
+                background: #ffffff;
+                color: #000000;
+                padding: 0;
+            }
+            .infographic-container {
+                width: 100%;
+                box-shadow: none;
+                border: none;
+                background: #ffffff;
+                color: #000000;
+                padding: 0;
+            }
+            .step-card, .metric-card {
+                background: #f9f9f9 !important;
+                border: 1px solid #e0e0e0 !important;
+                color: #000000 !important;
+            }
+            .step-text h4, .header h1, .process-title {
+                color: #003366 !important;
+            }
+            .step-text p, .metric-card p, .friction-info p {
+                color: #555555 !important;
+            }
+            .friction-block {
+                background: #fff0f0 !important;
+                border: 1px solid #ffa0a0 !important;
+            }
+            .step-circle {
+                background: #ffffff !important;
+            }
+            .timeline-line {
+                background: #003366 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="infographic-container">
+        <!-- Header -->
+        <header class="header">
+            <h1>RutaLarga <span>Running</span></h1>
+            <p>Infografía del Proyecto Antigravity - Asistente de IA</p>
+        </header>
+
+        <!-- Friction section -->
+        <div class="friction-block">
+            <div class="friction-icon">🚨</div>
+            <div class="friction-info">
+                <h3>El Problema Comercial</h3>
+                <p>El 82% de los corredores experimenta dudas biomecánicas en preventa. El tiempo de respuesta de 18-36h genera una pérdida anual de <b>94,440 €</b> en carritos abandonados y costes de logística inversa.</p>
+            </div>
+        </div>
+
+        <!-- 4 Steps Process -->
+        <h3 class="process-title">El Flujo del Asistente de IA</h3>
+        
+        <div class="timeline">
+            <div class="timeline-line"></div>
+            
+            <!-- Step 1 -->
+            <div class="step-item">
+                <div class="step-circle"></div>
+                <div class="step-card">
+                    <div class="step-text">
+                        <h4><span>01</span>Test Biomecánico del Corredor</h4>
+                        <p>El asistente interactivo averigua terreno, peso corporal, objetivos y tipo de pisada en segundos.</p>
+                    </div>
+                    <span class="step-badge">ManyChat Widget</span>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-item">
+                <div class="step-circle"></div>
+                <div class="step-card">
+                    <div class="step-text">
+                        <h4><span>02</span>Filtro del Catálogo en Tiempo Real</h4>
+                        <p>La IA cruza datos biomecánicos con el inventario y destaca visualmente los modelos sugeridos.</p>
+                    </div>
+                    <span class="step-badge">OpenAI GPT-4o mini</span>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-item">
+                <div class="step-circle"></div>
+                <div class="step-card">
+                    <div class="step-text">
+                        <h4><span>03</span>Captura de Leads (Lead Magnet)</h4>
+                        <p>Se ofrece un plan de entrenamiento técnico personalizado (PDF) y se capturan los datos en el CRM.</p>
+                    </div>
+                    <span class="step-badge">Klaviyo CRM</span>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-item">
+                <div class="step-circle"></div>
+                <div class="step-card">
+                    <div class="step-text">
+                        <h4><span>04</span>Conversión Final con Cupón</h4>
+                        <p>La IA otorga un cupón del 15% de descuento para cerrar la venta directamente en el checkout.</p>
+                    </div>
+                    <span class="step-badge">Shopify Checkout</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Stats -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="num">&lt; 1 min</div>
+                <h5>Tiempo Respuesta</h5>
+                <p>Frente a las 24 horas del soporte tradicional.</p>
+            </div>
+            <div class="metric-card">
+                <div class="num">+20%</div>
+                <h5>Conversión de Ventas</h5>
+                <p>Incremento directo de compras en la web.</p>
+            </div>
+            <div class="metric-card">
+                <div class="num">-25%</div>
+                <h5>Abandono Carritos</h5>
+                <p>Recuperación de compras perdidas por dudas preventa.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
