@@ -1016,3 +1016,20 @@ body {
     transform: translateY(20px);
     pointer-events: none;
 }
+
+/* ==========================================================================
+   APP FOOTER
+   ========================================================================== */
+.app-footer {
+    text-align: center;
+    padding: 16px;
+    background-color: rgba(9, 11, 15, 0.95);
+    border-top: 1px solid var(--border-card);
+    font-size: 11px;
+    color: var(--text-muted);
+    z-index: 50;
+}
+.app-footer span {
+    color: var(--accent-lime);
+    font-weight: 600;
+}
