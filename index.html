@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RutaLarga Running - AI Gear Finder & Advisor</title>
+    <!-- Google Fonts: Outfit & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background glow elements for rich aesthetics -->
+    <div class="glow-bg glow-1"></div>
+    <div class="glow-bg glow-2"></div>
+
+    <header class="app-header">
+        <div class="header-main">
+            <div class="logo-container">
+                <div class="logo-icon">🏃</div>
+                <div class="logo-text">
+                    <h1>RutaLarga <span>Running</span></h1>
+                    <p class="tagline">Intelligent Biomechanical AI Advisor</p>
+                </div>
+            </div>
+            <div class="poc-badge">
+                <span class="badge-dot"></span>
+                <span>Fase I: POC de Asistente IA</span>
+            </div>
+        </div>
+        
+        <!-- Live cost and friction metrics bar for business context -->
+        <div class="metrics-bar">
+            <div class="metric-item">
+                <span class="metric-label">Costo de Fricción Preventa (Pre-IA):</span>
+                <span class="metric-value warning">94,440 € / año</span>
+            </div>
+            <div class="metric-item divider"></div>
+            <div class="metric-item">
+                <span class="metric-label">Tiempo de Respuesta Soporte:</span>
+                <span class="metric-value success">Instante (&lt; 1 min)</span>
+            </div>
+            <div class="metric-item divider"></div>
+            <div class="metric-item">
+                <span class="metric-label">Tasa de Conversión Estimada:</span>
+                <span class="metric-value success">+20% de incremento</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <!-- Chatbot Simulator Column -->
+        <section class="chat-section">
+            <div class="glass-card chat-card">
+                <div class="card-header">
+                    <div class="avatar-status">
+                        <div class="avatar">🤖</div>
+                        <div class="status-info">
+                            <h3>Running Coach & Gear Finder</h3>
+                            <p class="status-text"><span class="pulse-dot"></span>En línea y listo para analizar tu pisada</p>
+                        </div>
+                    </div>
+                    <button id="reset-chat-btn" class="btn-icon" title="Reiniciar Test del Corredor">🔄 Reiniciar</button>
+                </div>
+
+                <!-- Chat history area -->
+                <div id="chat-messages" class="chat-messages">
+                    <!-- Message bubbles will be injected here by JS -->
+                </div>
+
+                <!-- Typring indicator -->
+                <div id="typing-indicator" class="typing-indicator hidden">
+                    <span></span><span></span><span></span>
+                </div>
+
+                <!-- Quick reply option buttons / User input -->
+                <div class="chat-footer">
+                    <div id="quick-replies" class="quick-replies-container">
+                        <!-- Buttons will dynamically change based on current question step -->
+                    </div>
+                    <div class="manual-input-container">
+                        <input type="text" id="chat-input" placeholder="Pregunta algo al asesor sobre running..." disabled>
+                        <button id="chat-send-btn" class="send-btn" disabled>Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Catalog & Recommendation Column -->
+        <section class="catalog-section">
+            <div class="glass-card catalog-card">
+                <div class="catalog-header">
+                    <div class="catalog-title-wrapper">
+                        <h2>Catálogo de Equipamiento</h2>
+                        <span id="catalog-badge" class="catalog-badge filter-all">Catálogo Completo</span>
+                    </div>
+                    <p id="catalog-summary-text" class="catalog-desc">Mostrando todas las referencias disponibles de alto rendimiento.</p>
+                </div>
+
+                <!-- Products Grid -->
+                <div id="products-grid" class="products-grid">
+                    <!-- Product cards will be injected here by JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lead Magnet Modal / Overlay (triggers after quiz finishes) -->
+    <div id="lead-modal" class="modal-overlay hidden">
+        <div class="glass-card modal-card animate-pop">
+            <div class="modal-header">
+                <span class="modal-icon">🎁</span>
+                <h2>¡Tu Test de Corredor está Completo!</h2>
+                <p>Descarga tu plan de entrenamiento técnico personalizado de 0 a 10K y desbloquea un descuento exclusivo.</p>
+            </div>
+            
+            <div class="modal-body">
+                <!-- User Profile Summary in Modal -->
+                <div class="profile-pill-container" id="profile-summary-pills">
+                    <!-- Pills injected here -->
+                </div>
+
+                <form id="lead-form" class="lead-form">
+                    <div class="form-group">
+                        <label for="lead-email">Correo Electrónico:</label>
+                        <input type="email" id="lead-email" placeholder="ejemplo@correo.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lead-phone">Número de WhatsApp (Opcional):</label>
+                        <input type="tel" id="lead-phone" placeholder="+34 600 000 000">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Descargar Plan de Entrenamiento + Obtener 15% Dto.</button>
+                </form>
+
+                <!-- Success Box (Hidden initially) -->
+                <div id="lead-success-box" class="lead-success-box hidden">
+                    <div class="success-banner">🎉 ¡Lead Capturado en Klaviyo!</div>
+                    <p class="success-desc">Hemos registrado tu perfil en nuestro CRM para enviarte ofertas personalizadas según tus objetivos de carrera.</p>
+                    
+                    <div class="coupon-box">
+                        <span class="coupon-label">TU CUPÓN DE BIENVENIDA:</span>
+                        <div class="coupon-code-wrapper">
+                            <span class="coupon-code" id="coupon-code">RUTALARGA15</span>
+                            <button id="copy-coupon-btn" class="btn-copy">Copiar</button>
+                        </div>
+                        <p class="coupon-note">Úsalo en el checkout para obtener un 15% de descuento en tus zapatillas recomendadas.</p>
+                    </div>
+
+                    <div class="download-box">
+                        <a id="download-plan-btn" href="#" class="btn btn-secondary btn-block" download>📥 Descargar Plan de Entrenamiento (PDF)</a>
+                    </div>
+                </div>
+            </div>
+            
+            <button id="close-modal-btn" class="btn-close">Cerrar y ver catálogo recomendado</button>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
